@@ -1,0 +1,25 @@
+{
+  "name": "calvi",
+  "version": "1.0.0",
+  "description": "\"# thingamabob\" \r \"# solidMath\" \r \"# solidMath\" \r \"# MathEncoder\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UndefinedGrasshopper/MathEncoder.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/UndefinedGrasshopper/MathEncoder/issues"
+  },
+  "homepage": "https://github.com/UndefinedGrasshopper/MathEncoder#readme",
+  "dependencies": {
+    "node-fetch": "^3.3.2"
+  },
+  "devDependencies": {}
+}
