@@ -1,33 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Fetch Example</title>
+  <title>hi</title>
 </head>
 <body>
   <p>Hello World!</p>
-  <input type="text" id="fname" placeholder="Enter URL">
+  <input type="text" id="fname" name="fname" placeholder="Enter URL">
   <button id="logHtmlBtn">Open Website</button>
 
   <script>
     document.getElementById("logHtmlBtn").addEventListener("click", async () => {
       const url = document.getElementById("fname").value.trim();
-      if (!url) return alert("Enter a URL");
+      if (!url) {
+        alert("Please enter a URL first.");
+        return;
+      }
 
       try {
-        // call Node.js server to fetch HTML
-        const response = await fetch(`/fetch?url=${encodeURIComponent(url)}`);
-        const html = await response.text();
+        let response = await fetch(`/fetch?url=${encodeURIComponent(url)}`);
+        if (!response.ok) throw new Error("Fetch failed");
+
+        let html = await response.text();
 
         const w = window.open("about:blank");
         w.document.open();
         w.document.write(html);
         w.document.close();
 
-        // re-inject scripts
+        // Re-run scripts inside the new page
         [...w.document.querySelectorAll("script")].forEach(oldScript => {
-          const newScript = document.createElement("script");
-          if (oldScript.src) newScript.src = oldScript.src;
-          else newScript.textContent = oldScript.textContent;
+          const newScript = w.document.createElement("script");
+          if (oldScript.src) {
+            newScript.src = oldScript.src;
+          } else {
+            newScript.textContent = oldScript.textContent;
+          }
           oldScript.replaceWith(newScript);
         });
       } catch (err) {

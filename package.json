@@ -1,7 +1,7 @@
 {
   "name": "calvi",
   "version": "1.0.0",
-  "description": "\"# thingamabob\" \r \"# solidMath\" \r \"# solidMath\" \r \"# MathEncoder\"",
+  "description": "none",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,17 +9,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/UndefinedGrasshopper/MathEncoder.git"
+    "url": "git+https://github.com/encryptionStudios/webgrab.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/UndefinedGrasshopper/MathEncoder/issues"
+    "url": "https://github.com/encryptionStudios/webgrab/issues"
   },
-  "homepage": "https://github.com/UndefinedGrasshopper/MathEncoder#readme",
+  "homepage": "https://github.com/encryptionStudios/webgrab#readme",
   "dependencies": {
+    "express": "^5.1.0",
     "node-fetch": "^3.3.2"
-  },
-  "devDependencies": {}
+  }
 }
