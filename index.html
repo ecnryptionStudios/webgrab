@@ -18,7 +18,7 @@
 
       try {
         let response = await fetch(`/fetch?url=${encodeURIComponent(url)}`);
-        if (!response.ok) throw new Error("Fetch failed");
+        if (!response.ok) throw new Error("Fetch failed on " + url);
 
         let html = await response.text();
 
