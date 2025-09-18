@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>hi</title>
+</head>
+<body>
+  <p>Hello World!</p>
+  <input type="text" id="fname" name="fname" placeholder="Enter URL">
+  <button id="logHtmlBtn">Open Website</button>
+
+  <script>
+    document.getElementById("logHtmlBtn").addEventListener("click", async () => {
+      const url = document.getElementById("fname").value.trim();
+      if (!url) {
+        alert("Please enter a URL first.");
+        return;
+      }
+
+      try {
+        let response = await fetch(`/fetch?url=${encodeURIComponent(url)}`);
+        if (!response.ok) throw new Error("Fetch failed");
+
+        let html = await response.text();
+
+        const w = window.open("about:blank");
+        w.document.open();
+        w.document.write(html);
+        w.document.close();
+
+        [...w.document.querySelectorAll("script")].forEach(oldScript => {
+          const newScript = w.document.createElement("script");
+          if (oldScript.src) {
+            newScript.src = oldScript.src;
+          } else {
+            newScript.textContent = oldScript.textContent;
+          }
+          oldScript.replaceWith(newScript);
+        });
+      } catch (err) {
+        alert("Can't open that site");
+        console.error(err);
+      }
+    });
+  </script>
+</body>
+</html>
